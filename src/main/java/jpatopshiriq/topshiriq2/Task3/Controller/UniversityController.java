@@ -18,10 +18,7 @@ import java.util.Optional;
 public class UniversityController {
     @Autowired
     UniversityRepository universityRepository;
-    @Autowired
-    AddressRepository addressRepository;
-
-
+    
     // READ all universities
     @GetMapping
     public List<University> getAllUniversities() {
