@@ -34,15 +34,7 @@ public class UniversityController {
     public String addUniversities(@RequestBody UniversityDTO universityDTO) {
         University universities = new University();
         universities.setName(universityDTO.getName());
-
-        // address
-        Optional<Address> optionalAddress = addressRepository.findById(universityDTO.getAddressId());
-        if (optionalAddress.isPresent()){
-            universities.setAddress(optionalAddress.get());
-        }else {
-            return "Address not found";
-        }
-
+        
         universityRepository.save(universities);
         return "University added";
     }
@@ -57,14 +49,6 @@ public class UniversityController {
 
             // university
             editedUniversity.setName(universityDTO.getName());
-
-            // address
-            Optional<Address> optionalAddress = addressRepository.findById(universityDTO.getAddressId());
-            if (optionalAddress.isPresent()){
-                editedUniversity.setAddress(optionalAddress.get());
-            }else {
-                return "Address not found";
-            }
 
             universityRepository.save(editedUniversity);
             update = true;
